@@ -1,0 +1,20 @@
+<!-- Eric JENN 2018 -->
+
+<?xml version="1.0"?>
+<sdf version="1.4">
+<world name="myworld">
+	<include>
+		<uri>model://sun</uri>
+	</include>
+	<include>
+		<uri>model://ground_plane</uri>
+	</include>
+	<!-- Don't forget to set GAZEBO_MODEL_PATH so that it contains the 
+	     directory containing the office model. 
+	     In my setup: /home/eric/Work/ROS/building_editor_models -->
+	<include>
+		<uri>model://twirtee_lab</uri>
+	</include>
+</world>
+</sdf>
+

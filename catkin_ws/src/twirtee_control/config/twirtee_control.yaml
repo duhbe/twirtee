@@ -1,0 +1,44 @@
+twirtee:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50  
+
+
+# Effort Controllers ---------------------------------------
+  leftWheel_effort_controller:
+    type: effort_controllers/JointEffortController
+    joint: left_wheel_hinge
+    pid: {p: 100.0, i: 0.1, d: 10.0}
+  rightWheel_effort_controller:
+    type: effort_controllers/JointEffortController
+    joint: right_wheel_hinge
+    pid: {p: 100.0, i: 0.1, d: 10.0}
+
+# Position Controllers ---------------------------------------
+# See the list of controllers at http://wiki.ros.org/ros_control
+# See also https://slaterobots.com/blog/5abd8a1ed4442a651de5cb5b/how-to-implement-ros_control-on-a-custom-robot
+# If the actuator is jittering, decrease the value of the d parameter of the PID.
+
+# rplidar_position_controller is controlled in order for the TF to be published (otherwise Rviz will 
+# indicate an error. 
+  joint0_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: link0_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint1_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: link1_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint3_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: link3_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint5_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: link5_joint
+    pid: {p: 10.0, i: 0.01, d: 0.0}
+  rplidar_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: rplidar-base-top
+    pid: {p: 10.0, i: 0.01, d: 0.0}

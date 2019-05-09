@@ -1,0 +1,180 @@
+    1  df
+    2  passwd
+    3  cd Tmp
+    4  cd tmp
+    5  mkdir Tmp
+    6  cd Tmp
+    7  sudo apt-get update
+    8  sudo apt install opam
+    9  opam switch 4.02.3
+   10  opam init
+   11  opam switch 4.02.3
+   12  eval `opam config env`
+   13  opam install heptagon
+   14  opam depext conf-m4.1
+   15  opam install heptagon
+   16  heptc 
+   17  heptc  --help
+   18  minicom -d /dev/ttyACM0 
+   19  sudo apt install minicom
+   20  minicom -d /dev/ttyACM0 
+   21  sudo minicom -d /dev/ttyACM0 
+   22  minicom --help
+   23  sudo minicom -D /dev/ttyACM0 
+   24  sudo minicom -d /dev/ttyUSB0 
+   25  sudo minicom -D /dev/ttyUSB0 
+   26  lspci | grep VGA
+   27  morse
+   28  sudo apt install morse-simulator
+   29  blender
+   30  ls ~:bin
+   31  ls bin
+   32  ls
+   33  ls Tmp
+   34  ls
+   35  roslaunch
+   36  ros
+   37  source /opt/ros/melodic/setup.bash 
+   38  geany ~/.profile 
+   39  sudo apt install geany
+   40  history
+   41  geany ~/.profile
+   42  cd Wo
+   43  mkdir Work
+   44  cd Work/
+   45  mkdir ROS
+   46  cd ROS/
+   47  ls
+   48  unzip TUTORIAL.zip 
+   49  ls
+   50  rm TUTORIAL.zip 
+   51  ls
+   52  cd TUTORIAL/catkin_ws/
+   53  ls
+   54  source devel/setup.bash 
+   55  sudo apt-get install ros-melodic-effort-controllers
+   56  sudo apt-get install ros-melodic-ros-control ros-melodic-ros-controllers
+   57  sudo apt-get install ros-melodic-position-controllers
+   58  sudo apt-get install ros-melodic-controller-manager
+   59  roslaunch mybot_gazebo mybot_world.launch
+   60  catkin_make
+   61  cd ..
+   62  mkdir Twirtee
+   63  cd Twirtee/
+   64  catkin_make
+   65  mkdir -p ~/catkin_ws/src
+   66  catkin_init_workspace
+   67  cd ..
+   68  catkin_make
+   69  ls
+   70  cd Twirtee/
+   71  ls
+   72  rm CMakeLists.txt 
+   73  mkdir -p ~/catkin_ws/src
+   74  rm -rf ~/catkin_ws/src
+   75  mkdir -p catkin_ws/src
+   76  cd catkin_ws/src/
+   77  catkin_init_workspace
+   78  cd ..
+   79  catkin_make
+   80  source catkin_ws/devel/setup.bash
+   81  source devel/setup.bash
+   82  history > HIS
+   83  geany HIS &
+   84  cd catkin_ws/src
+   85  cd src
+   86  catkin_create_pkg twirtee_gazebo gazebo_ros
+   87  ls
+   88  catkin_create_pkg twirtee_description
+   89  catkin_create_pkg twirtee_control
+   90  roscd twirtee_gazebo 
+   91  mkdir launch worlds
+   92  cd worlds
+   93  cp ~/Work/ROS/TUTORIAL/catkin_ws/src/mybot_gazebo/worlds/* .
+   94  ls
+   95  roscd twirtee_gazebo/launch
+   96  cp ~/Work/ROS/TUTORIAL/catkin_ws/src/mybot_gazebo/launch/* .
+   97  ls
+   98  roslaunch mybot_gazebo mybot_world.launch
+   99  roslaunch twirtee_gazebo mybot_world.launch
+  100  geany mybot_world.launch
+  101  roscd mybot_description
+  102  roscd twirtee_description
+  103  mkdir urdf
+  104  cd urdf
+  105  cp ~/Work/ROS/TUTORIAL/catkin_ws/src/mybot_description/urdf/* .
+  106  ls
+  107  roscd twirtee_control
+  108  mkdir config
+  109  cd config
+  110  cp ~/Work/ROS/TUTORIAL/catkin_ws/src/mybot_control/config/* .
+  111  roscd twirtee_control
+  112  mkdir launch
+  113  cd launch
+  114  cp ~/Work/ROS/TUTORIAL/catkin_ws/src/mybot_control/launch/* .
+  115  ls
+  116  mv mybot_control.launch twirtee_control.launch
+  117  roslaunch twirtee_gazebo mybot_world.launch
+  118  roscd twirtee_control
+  119  ls
+  120  cd launch/
+  121  geany twirtee_control.launch 
+  122  %%&
+  123  ls
+  124  cd ..
+  125  ls
+  126  cd config/
+  127  ls
+  128  mv mybot_control.yaml twirtee_control.yaml
+  129  geany twirtee_control.yaml 
+  130  roslaunch twirtee_gazebo mybot_world.launch
+  131  ls
+  132  cd ..
+  133  ls
+  134  cd ..
+  135  ls
+  136  cd twirtee_description/
+  137  ls
+  138  cd urdf/
+  139  ls
+  140  mv mybot.gazebo twirtee.gazebo
+  141  mv mybot.xacro twirtee.xacro
+  142  geany twirtee.gazebo 
+  143  geany twirtee.xacro 
+  144  roslaunch twirtee_gazebo mybot_world.launch
+  145  roscd twirtee_config
+  146  roscd twirtee_control/
+  147  ls
+  148  cd launch/
+  149  ls
+  150  cd ..
+  151  ls
+  152  cd ..
+  153  ls
+  154  cd twirtee_gazebo/
+  155  ls
+  156  cd launch/
+  157  ls
+  158  mv mybot_world.launch twirtee_worl.launch
+  159  geany twirtee_worl.launch 
+  160  roslaunch twirtee_gazebo twirtee_world.launch
+  161  ls
+  162  mv twirtee_worl.launch twirtee_world.launch
+  163  roslaunch twirtee_gazebo twirtee_world.launch
+  164  roscd twirtee_gazebo
+  165  ls
+  166  cd launch/
+  167  ls
+  168  geany twirtee_world.launch 
+  169  cd ..
+  170  ls worlds/
+  171  cd worlds/o
+  172  cd worlds/
+  173  mv mybot2.world twirtee.world
+  174  roslaunch twirtee_gazebo twirtee_world.launch
+  175  fg
+  176  cd ..
+  177  ls
+  178  cd ..
+  179  ls
+  180  history > HIS

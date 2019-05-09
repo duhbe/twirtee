@@ -1,0 +1,19 @@
+digraph G {
+"footprint" -> "chassis"[label="Broadcaster: /robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 2289.835 sec old)\nBuffer length: 0.000 sec\n"];
+"odom" -> "footprint"[label="Broadcaster: /gazebo\nAverage rate: 100.201 Hz\nMost recent transform: 2289.834 ( 0.001 sec old)\nBuffer length: 4.980 sec\n"];
+"chassis" -> "link0"[label="Broadcaster: /robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 2289.835 sec old)\nBuffer length: 0.000 sec\n"];
+"chassis" -> "caster_wheel"[label="Broadcaster: /robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 2289.835 sec old)\nBuffer length: 0.000 sec\n"];
+"link3" -> "link4"[label="Broadcaster: /robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 2289.835 sec old)\nBuffer length: 0.000 sec\n"];
+"link2" -> "link3"[label="Broadcaster: /robot_state_publisher\nAverage rate: 50.202 Hz\nMost recent transform: 2289.822 ( 0.013 sec old)\nBuffer length: 4.960 sec\n"];
+"link5" -> "camera"[label="Broadcaster: /robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 2289.835 sec old)\nBuffer length: 0.000 sec\n"];
+"link4" -> "link5"[label="Broadcaster: /robot_state_publisher\nAverage rate: 50.202 Hz\nMost recent transform: 2289.822 ( 0.013 sec old)\nBuffer length: 4.960 sec\n"];
+"link5" -> "finger"[label="Broadcaster: /robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 2289.835 sec old)\nBuffer length: 0.000 sec\n"];
+"chassis" -> "left_wheel"[label="Broadcaster: /robot_state_publisher\nAverage rate: 50.202 Hz\nMost recent transform: 2289.822 ( 0.013 sec old)\nBuffer length: 4.960 sec\n"];
+"link0" -> "link1"[label="Broadcaster: /robot_state_publisher\nAverage rate: 50.202 Hz\nMost recent transform: 2289.822 ( 0.013 sec old)\nBuffer length: 4.960 sec\n"];
+"link1" -> "link2"[label="Broadcaster: /robot_state_publisher\nAverage rate: 50.202 Hz\nMost recent transform: 2289.822 ( 0.013 sec old)\nBuffer length: 4.960 sec\n"];
+"chassis" -> "right_wheel"[label="Broadcaster: /robot_state_publisher\nAverage rate: 50.202 Hz\nMost recent transform: 2289.822 ( 0.013 sec old)\nBuffer length: 4.960 sec\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 2289.835"[ shape=plaintext ] ;
+ }->"odom";
+}

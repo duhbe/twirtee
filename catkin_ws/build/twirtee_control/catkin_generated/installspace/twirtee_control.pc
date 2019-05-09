@@ -1,0 +1,8 @@
+prefix=/home/twirtee/Work/ROS/Twirtee/catkin_ws/install
+
+Name: twirtee_control
+Description: Description of twirtee_control
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/twirtee/Work/ROS/Twirtee/catkin_ws/install/lib 
+Requires: 

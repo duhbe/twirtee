@@ -1,0 +1,2 @@
+twirtee_c:twirtee_control:twirtee_description:twirtee_gazebo
+-DCATKIN_DEVEL_PREFIX=/home/twirtee/Work/ROS/Twirtee/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/twirtee/Work/ROS/Twirtee/catkin_ws/install -G Unix Makefiles
