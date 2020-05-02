@@ -7,4 +7,4 @@
 # new environment variables
 
 # modified environment variables
-export PWD="/home/twirtee/Work/ROS/Twirtee/catkin_ws/build"
+export PWD="/home/eric/Work/ROS/twirtee/catkin_ws/build"

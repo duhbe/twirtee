@@ -1,8 +1,8 @@
-# Install script for directory: /home/twirtee/Work/ROS/Twirtee/catkin_ws/src/twirtee_description
+# Install script for directory: /home/eric/Work/ROS/twirtee/catkin_ws/src/twirtee_description
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/twirtee/Work/ROS/Twirtee/catkin_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/eric/Work/ROS/twirtee/catkin_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,17 +38,17 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/twirtee/Work/ROS/Twirtee/catkin_ws/build/twirtee_description/catkin_generated/installspace/twirtee_description.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/eric/Work/ROS/twirtee/catkin_ws/build/twirtee_description/catkin_generated/installspace/twirtee_description.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/twirtee_description/cmake" TYPE FILE FILES
-    "/home/twirtee/Work/ROS/Twirtee/catkin_ws/build/twirtee_description/catkin_generated/installspace/twirtee_descriptionConfig.cmake"
-    "/home/twirtee/Work/ROS/Twirtee/catkin_ws/build/twirtee_description/catkin_generated/installspace/twirtee_descriptionConfig-version.cmake"
+    "/home/eric/Work/ROS/twirtee/catkin_ws/build/twirtee_description/catkin_generated/installspace/twirtee_descriptionConfig.cmake"
+    "/home/eric/Work/ROS/twirtee/catkin_ws/build/twirtee_description/catkin_generated/installspace/twirtee_descriptionConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/twirtee_description" TYPE FILE FILES "/home/twirtee/Work/ROS/Twirtee/catkin_ws/src/twirtee_description/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/twirtee_description" TYPE FILE FILES "/home/eric/Work/ROS/twirtee/catkin_ws/src/twirtee_description/package.xml")
 endif()
 

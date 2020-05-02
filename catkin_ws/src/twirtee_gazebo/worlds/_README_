@@ -1,3 +1,0 @@
-Two world:
-- "mybot.world" is a simple world that includes a building.
-- "mybot2;world" has been created using Gazebo. In contains the definition of the building plus a number of other elements, including tables.

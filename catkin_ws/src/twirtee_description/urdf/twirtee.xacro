@@ -4,7 +4,7 @@
 <!-- ================== -->	
 <!-- (C) Eric JENN 2019 -->
 <!-- ================== -->
-
+<!-- To generate the URDF: xacro twirtee.xacro > twirtee.urdf -->
 <!-- Constants -->
 
   <xacro:property name="PI" value="3.1415926535897931"/>
@@ -12,34 +12,65 @@
 <!-- Modeling parameters -->
 <!-- [TODO] use actual values -->
   
-  <xacro:property name="chassisHeight" 	value="0.5"/>
-  <xacro:property name="chassisRadius" 	value="0.2"/>
-  <xacro:property name="chassisMass" 	value="50"/>
+  <xacro:property name="floor0Length" 	value="0.30"/>
+  <xacro:property name="floor0Width" 	value="0.20"/>
+  <xacro:property name="floor0Heigth" 	value="0.003"/>
+  <xacro:property name="floor0Mass" 	value="1"/>
+
+  <xacro:property name="spacerRadius" 	value="0.002"/>
+  <xacro:property name="spacer01Width" 	value="0.060"/>
+  <xacro:property name="spacer01Mass" 	value="1"/>
+   
+  <xacro:property name="floor1Length" 	value="0.300"/>
+  <xacro:property name="floor1Width" 	value="0.200"/>
+  <xacro:property name="floor1Heigth" 	value="0.003"/>
+  <xacro:property name="floor1Mass" 	value="1"/>
+
+  <xacro:property name="spacer12Width" 	value="0.050"/>
+  <xacro:property name="spacer12Mass" 	value="1"/>
+  
+  <xacro:property name="floor2Length" 	value="0.30"/>
+  <xacro:property name="floor2Width" 	value="0.20"/>
+  <xacro:property name="floor2Heigth" 	value="0.003"/>
+  <xacro:property name="floor2Mass" 	value="1"/>
 
   <xacro:property name="casterRadius" 	value="0.1"/>
   <xacro:property name="casterMass" 	value="5"/>
 
-  <xacro:property name="wheelWidth" 	value="0.05"/>
-  <xacro:property name="wheelRadius" 	value="0.075"/>
-  <xacro:property name="wheelPos" 		value="0.05"/>
+  <xacro:property name="wheelWidth" 	value="0.010"/>
+  <xacro:property name="wheelRadius" 	value="0.032"/>
   <xacro:property name="wheelMass" 		value="5"/>
 
-  <xacro:property name="fingerLength" 	value="0.05"/>
-  <xacro:property name="fingerRadius" 	value="0.001"/>
-  <xacro:property name="fingerWeight" 	value="0.01"/>
+  <xacro:property name="wheelExcen" 	value="0.007"/>
 
-  <xacro:property name="servoMass" 		value="0.05"/>
-  <xacro:property name="servoHeight" 	value="0.02"/>
-  <xacro:property name="servoLength" 	value="0.04"/>
-  <xacro:property name="servoWidth" 	value="0.036"/>
-  <xacro:property name="servoAxisPos" 	value="0.01"/>
-  <xacro:property name="servoAxisRadius" value="0.001"/>
-  <xacro:property name="servoAxisLength" value="0.008"/>
+  <xacro:property name="wheelFixtOffset" 	value="0.030"/>
+  <xacro:property name="wheelFloor0Offset" 	value="${wheelFixtOffset+motorFixtHHeigth}"/>
+  <xacro:property name="wheelXOffset" 	value="0.05"/>
+
+  <xacro:property name="motorAxisWidth" 	value="0.0045"/>
+  <xacro:property name="motorAxisRadius" 	value="0.003"/>
+  <xacro:property name="motorAxisMass" 		value="5"/>
+
+  <xacro:property name="motorWidth" 	value="0.0445"/>
+  <xacro:property name="motorRadius" 	value="0.0185"/>
+  <xacro:property name="motorMass" 		value="5"/>
+  
+
+
+  <xacro:property name="motorFixtVLength" 	value="0.30"/>
+  <xacro:property name="motorFixtVWidth" 	value="0.20"/>
+  <xacro:property name="motorFixtVHeigth" 	value="0.003"/>
+  <xacro:property name="motorFixtVMass" 	value="1"/>
+  
+  <xacro:property name="motorFixtHLength" 	value="0.30"/>
+  <xacro:property name="motorFixtHWidth" 	value="0.20"/>
+  <xacro:property name="motorFixtHHeigth" 	value="0.003"/>
+  <xacro:property name="motorFixtHMass" 	value="1"/>
 
   <xacro:property name="cameraSize" 	value="0.02"/>
   <xacro:property name="cameraMass" 	value="0.5"/>
 
-  <xacro:include filename="$(find twirtee_description)/urdf/twirtee.gazebo" />
+
   <xacro:include filename="$(find twirtee_description)/urdf/materials.xacro" />
   <xacro:include filename="$(find twirtee_description)/urdf/macros.xacro" />
 
@@ -49,295 +80,81 @@
 
   <link name="footprint" />
 
-<!-- Robot's base -->
+<!-- Level 0 -->
 
   <joint name="base_joint" type="fixed">
     <parent link="footprint"/>
-    <child link="chassis"/>
+    <child link="level0"/>
+      <origin xyz="0 0 ${wheelRadius+wheelFloor0Offset+floor0Heigth/2}" rpy="0 0 0" />
   </joint>
 
-  <link name="chassis">
-    <collision>
-      <origin xyz="0 0 ${wheelRadius}" rpy="0 0 0" />
-      <geometry>
-	<cylinder radius="${chassisRadius}" length="${chassisHeight}"/>
-      </geometry>
-    </collision>
+  <link name="level0">
     <visual>
-      <origin xyz="0 0 ${wheelRadius}" rpy="0 0 0"/>
       <geometry>
-	<cylinder radius="${chassisRadius}" length="${chassisHeight}"/>
+		<box size="${floor0Length} ${floor0Width} ${floor0Heigth}" />
+	    <cylinder radius="${spacerRadius}" length="${spacer01Width}"/>
       </geometry>
     </visual>
-    <inertial>
-      <origin xyz="0 0 ${wheelRadius}" rpy="0 0 0"/>
-      <mass value="${chassisMass}"/>
-      <cylinder_inertia m="${chassisMass}" r="${chassisRadius}" h="${chassisHeight}"/>
-    </inertial>
   </link>
 
-<joint name="fixed" type="fixed">
-  <parent link="chassis"/>
-  <child link="caster_wheel"/>
-</joint>
+<!-- Level 1 -->
 
-<link name="caster_wheel">
-  <collision>
-    <origin xyz="${casterRadius-chassisRadius} 0 ${casterRadius-chassisHeight/2}" rpy="0 0 0"/>
-    <geometry>
-      <sphere radius="${casterRadius}"/>
-    </geometry>
-  </collision>
-  
-  <visual>
-    <origin xyz="${casterRadius-chassisRadius} 0 ${casterRadius-chassisHeight/2}" rpy="0 0 0"/>
-    <geometry>
-      <sphere radius="${casterRadius}"/>
-    </geometry>
-    <material name="red"/>
-  </visual>
+  <joint name="l0l1_joint" type="fixed">
+    <parent link="level0"/>
+    <child link="level1"/>
+	<origin xyz=" 0.0 0.0 ${spacer01Width+floor1Heigth/2}" rpy="0 0 0" />    
+  </joint>
 
-  <inertial>
-    <origin xyz="${casterRadius-chassisRadius} 0 ${-casterRadius-chassisHeight/2}" rpy="0 0 0"/>
-    <mass value="${casterMass}"/>
-    <sphere_inertia m="${casterMass}" r="${casterRadius}"/>
-  </inertial>
-</link>
+  <link name="level1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+		<box size="${floor1Length} ${floor1Width} ${floor1Heigth}" />
+      </geometry>
+    </visual>
+  </link>
+
+<!-- Level 2 -->
+
+  <joint name="l1l2_joint" type="fixed">
+    <parent link="level1"/>
+    <child link="level2"/>
+	<origin xyz=" 0.0 0.0 ${spacer12Width+floor1Heigth/2}" rpy="0 0 0" />    
+  </joint>
+    
+  <link name="level2">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+		<box size="${floor2Length} ${floor2Width} ${floor2Heigth}" />
+      </geometry>
+    </visual>
+  </link>
+      
+<!-- ========================== -->
+<!--          WHEELS            -->
+<!-- ========================== -->
 
 <wheel lr="left" tY="1"/>
 <wheel lr="right" tY="-1"/>
 
-
-
-<!-- Robot's arm -->
-
-<servo ln="link0" x="0.0" y="0.0" z="0.0" />
-
-<servo ln="link1" x="0.0" y="0.0" z="0.0" />
-
-<link name="link2">
-	<visual>
-	  <origin rpy="0.00 0.00 0.00" xyz="${-0.090/2+0.01} 0.0 ${-servoWidth/2}"/>
-	  <geometry>
-	    <box size="0.090  0.010 0.001" />
-	  </geometry>
-	  <material name="red"/>
-	</visual>
-	<visual>
-	  <origin rpy="0.00 0.00 0.00" xyz="${-0.090/2+0.01} 0.00 ${servoWidth/2}"/>
-	  <geometry>
-	    <box size="0.090 0.010 0.001" />
-	  </geometry>
-	  <material name="red"/>
-	</visual>
-	<inertial>
-	  <mass value="0.05"/>
-	  <inertia ixx="0.04" ixy="0.00" ixz="0.00" iyy="0.04" iyz="0.00" izz="0.02"/>
-	</inertial>
-</link>
-
-
-<servo ln="link3" x="${-servoLength/2+0.01}" y="0.0" z="0.0" />
-
-<link name="link4">
-	<visual>
-		<origin rpy="0.00 0.00 0.00" xyz="${-0.090/2+0.01} 0.0 ${-servoWidth/2}"/>
-		<geometry>
-			<box size="0.090  0.010 0.001" />
-		</geometry>
-		<material name="red"/>
-	</visual>
-	<visual>
-		<origin rpy="0.00 0.00 0.00" xyz="${-0.090/2+0.01} 0.00 ${servoWidth/2}"/>
-		<geometry>
-			<box size="0.090 0.010 0.001" />
-		</geometry>
-		<material name="red"/>
-	</visual>
-	<inertial>
-		<mass value="0.05"/>
-		<inertia ixx="0.04" ixy="0.00" ixz="0.00" iyy="0.04" iyz="0.00" izz="0.02"/>
-	</inertial>
-</link>
-
-<servo ln="link5" x="${-servoLength/2+0.01}" y="0.0" z="0.0" />
-
-<link name="finger">
-	<visual>
-		<origin rpy="0 ${PI/2} 0 " xyz="${-servoLength+0.01} 0.0 0.0 "/>
-		<geometry>
-			<cylinder radius="${fingerRadius}" length="${fingerLength}"/>
-		</geometry>
-	</visual>
-	<collision>
-		<origin rpy="0 ${PI/2} 0 " xyz="${-servoLength+0.01} 0.0 0.0 "/>
-		<geometry>
-			<cylinder radius="${fingerRadius}" length="${fingerLength}"/>
-		</geometry>
-	</collision>
-	<inertial>
-		<origin rpy="0 ${PI/2} 0 " xyz="${-servoLength+0.01} 0.0 0.0 "/>
-		<mass value="${fingerWeight}"/>
-		<cylinder_inertia m="${fingerWeight}" r="${fingerRadius}" h="${fingerLength}" />
-	</inertial>
-</link>
-
-<joint name="chassis_arm" type="fixed">
-	<parent link="chassis"/>
-	<child link="link0"/>
-	<origin xyz="0.00 0.00 ${chassisHeight/2+wheelRadius+servoWidth/2}" rpy="0 0 0" />
-</joint>
-
-<joint name="link0_joint" type="revolute">
-	<parent link="link0"/>
-	<child link="link1"/>
-	<origin xyz="${servoLength/2-0.010} 0.0 ${servoWidth/2+servoHeight/2+servoAxisLength}" rpy="${-PI/2} 0.0 0.0" />
-	<axis xyz="0.0 1.0 0.0" />
-	<limit effort="30" velocity="1.0" lower="${-PI/2}" upper="${PI/2}" />
-</joint>
-
-<joint name="link1_joint" type="revolute">
-	<parent link="link1"/>
-	<child link="link2"/>
-	<origin xyz="${servoLength/2-0.01} 0.0 0.0" rpy="0.0 0.0 0.0" />
-	<axis xyz="0.0 0.0 1.00" />
-	<limit effort="30" velocity="1.0" lower="${-PI/2}" upper="${PI/2}" />
-</joint>
-
-<joint name="link3_joint" type="revolute">
-	<parent link="link2"/>
-	<child link="link3"/>
-	<origin xyz="${-0.090+2*0.01} 0.0 0.00" rpy="0 0 0" />
-	<axis xyz="0.0 0.00 1.00" />
-	<limit effort="30" velocity="1.0" lower="${-PI/2}" upper="${PI/2}" />
-</joint>
-
-<joint name="link4_joint" type="fixed">
-	<parent link="link3"/>
-	<child link="link4"/>
-	<origin xyz="${-servoLength+2*0.01} 0.0 0.00" rpy="0 0 0" />
-</joint>
-
-<joint name="link5_joint" type="revolute">
-	<parent link="link4"/>
-	<child link="link5"/>
-	<origin xyz="${-0.090+2*0.01} 0.0 0.00" rpy="0 0 0" />
-	<axis xyz="0.0 0.00 1.00" />
-	<limit effort="30" velocity="1.0" lower="${-PI/2}" upper="${PI/2}" />
-</joint>
-
-<joint name="link6_joint" type="fixed">
-	<parent link="link5"/>
-	<child link="camera"/>
-	<origin xyz="-0.01 ${-servoHeight/2-cameraSize/2} 0.0" rpy="${PI/2} ${PI} 0.0" />
-</joint>
-
-<joint name="link7_joint" type="fixed">
-	<parent link="link5"/>
-	<child link="finger"/>
-	<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
-</joint>
+<!-- ========================== -->
+<!--          MOTORS            -->
+<!-- ========================== -->
 
 
 <!-- ========================== -->
-<!--          CAMERAS           -->
+<!--          CAMERA            -->
 <!-- ========================== -->
 
-<link name="camera">
-  <collision>
-    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
-    <geometry>
-      <box size="${cameraSize} ${cameraSize} ${cameraSize}"/>
-    </geometry>
-  </collision>
-
-  <visual>
-    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
-    <geometry>
-      <box size="${cameraSize} ${cameraSize} ${cameraSize}"/>
-    </geometry>
-    <material name="blue"/>
-  </visual>
-
-  <inertial>
-    <mass value="${cameraMass}" />
-    <origin xyz="0 0 0" rpy="0 0 0"/>
-    <box_inertia m="${cameraMass}" x="${cameraSize}" y="${cameraSize}" z="${cameraSize}" />
-  </inertial>
-</link>
+<!-- ========================== -->
+<!--          IMU            -->
+<!-- ========================== -->
 
 
 <!-- ========================= -->
 <!--           LIDAR           -->
 <!-- ========================= -->
 
-<joint name="chassis-lidar" type="fixed">
-  <parent link="chassis"/>
-  <child link="rplidar-base"/>
-  <origin xyz="0.1 0 ${chassisHeight/2+wheelRadius+.05867/2}" rpy="0 0 0" />
-</joint>
-
-<link name="rplidar-base">
-	<collision>
-		<origin xyz="0 0 0" rpy="0 0 0" />
-		<geometry>
-			<cylinder radius="0.04267" length=".05867" />
-		</geometry>
-	</collision>
-	<visual>
-		<origin xyz="0 0 0" rpy="0 0 0" />
-		<geometry>
-			<cylinder radius="0.04267" length=".05867" />
-		</geometry>
-	</visual>
-	<inertial>
-		<mass value="0.01" />
-		<origin xyz="0 0 0" rpy="0 0 0"/>
-		<cylinder_inertia m="0.01" r="0.04267" h=".05867" />
-	</inertial>
-</link>
-
-
-<joint name="rplidar-base-top" type="revolute" >
-	<parent link="rplidar-base" />
-	<child link="rplidar-top" />
-	<origin xyz="0.0 0.0 ${0.05867/2}" rpy="0 0 0" />
-	<axis xyz="0.0 0.0 1.0" />
-	<limit effort="30" velocity="1.0" lower="${-PI}" upper="${PI}" />
-	<dynamics damping="1.0" friction="100.0"/>
-</joint>
-
-
-<link name="rplidar-top">
-    <collision>
-      	<origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-            <cylinder radius="0.04267" length="0.07357" />
-        </geometry>
-    </collision>
-    <visual>
- 	<origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-            <cylinder radius="0.04267" length="0.07357" />
-        </geometry>
-    </visual>
-		<inertial>
-		<mass value="0.01" />
-		<origin xyz="0 0 0" rpy="0 0 0"/>
-		<cylinder_inertia m="0.100" r="0.04267" h="0.07357" />
-	</inertial>
-</link>
-
-<!-- The RPLIDAR is controlled in order for the TF to be published (otherwise Rviz will indicate an error.  -->
-<transmission name="rplidar">
-	<type>transmission_interface/SimpleTransmission</type>
-	<joint name="rplidar-base-top">
-		<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-	</joint>
-	<actuator name="rplidar_motor">
-		<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-		<mechanicalReduction>1</mechanicalReduction>
-	</actuator>
-</transmission>
 
 </robot>

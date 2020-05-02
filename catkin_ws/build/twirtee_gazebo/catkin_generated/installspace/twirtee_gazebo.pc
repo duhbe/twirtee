@@ -1,8 +1,8 @@
-prefix=/home/twirtee/Work/ROS/Twirtee/catkin_ws/install
+prefix=/home/eric/Work/ROS/twirtee/catkin_ws/install
 
 Name: twirtee_gazebo
 Description: Description of twirtee_gazebo
 Version: 0.0.0
 Cflags: 
-Libs: -L/home/twirtee/Work/ROS/Twirtee/catkin_ws/install/lib 
+Libs: -L/home/eric/Work/ROS/twirtee/catkin_ws/install/lib 
 Requires: 

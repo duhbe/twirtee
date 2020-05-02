@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/listener.dir/listener.cpp.o"
-  "/home/twirtee/Work/ROS/Twirtee/catkin_ws/devel/lib/twirtee_c/listener.pdb"
-  "/home/twirtee/Work/ROS/Twirtee/catkin_ws/devel/lib/twirtee_c/listener"
+  "/home/eric/Work/ROS/twirtee/catkin_ws/devel/lib/twirtee_c/listener.pdb"
+  "/home/eric/Work/ROS/twirtee/catkin_ws/devel/lib/twirtee_c/listener"
 )
 
 # Per-language clean rules from dependency scanning.

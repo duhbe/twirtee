@@ -6,13 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/home/twirtee/Work/ROS/Twirtee/catkin_ws/src/twirtee_c/driver.cpp
+/home/eric/Work/ROS/twirtee/catkin_ws/src/twirtee_c/driver.cpp
 ros/ros.h
-/home/twirtee/Work/ROS/Twirtee/catkin_ws/src/twirtee_c/ros/ros.h
+/home/eric/Work/ROS/twirtee/catkin_ws/src/twirtee_c/ros/ros.h
 geometry_msgs/Twist.h
 -
 std_msgs/String.h
-/home/twirtee/Work/ROS/Twirtee/catkin_ws/src/twirtee_c/std_msgs/String.h
+/home/eric/Work/ROS/twirtee/catkin_ws/src/twirtee_c/std_msgs/String.h
 sstream
 -
 

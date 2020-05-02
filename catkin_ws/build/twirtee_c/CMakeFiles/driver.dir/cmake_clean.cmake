@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/driver.dir/driver.cpp.o"
-  "/home/twirtee/Work/ROS/Twirtee/catkin_ws/devel/lib/twirtee_c/driver.pdb"
-  "/home/twirtee/Work/ROS/Twirtee/catkin_ws/devel/lib/twirtee_c/driver"
+  "/home/eric/Work/ROS/twirtee/catkin_ws/devel/lib/twirtee_c/driver.pdb"
+  "/home/eric/Work/ROS/twirtee/catkin_ws/devel/lib/twirtee_c/driver"
 )
 
 # Per-language clean rules from dependency scanning.

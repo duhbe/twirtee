@@ -1,8 +1,8 @@
-# Install script for directory: /home/twirtee/Work/ROS/Twirtee/catkin_ws/src/twirtee_c
+# Install script for directory: /home/eric/Work/ROS/twirtee/catkin_ws/src/twirtee_c
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/twirtee/Work/ROS/Twirtee/catkin_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/eric/Work/ROS/twirtee/catkin_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,37 +38,37 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/twirtee_c/cmake" TYPE FILE FILES "/home/twirtee/Work/ROS/Twirtee/catkin_ws/build/twirtee_c/catkin_generated/installspace/twirtee_c-msg-paths.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/twirtee_c/cmake" TYPE FILE FILES "/home/eric/Work/ROS/twirtee/catkin_ws/build/twirtee_c/catkin_generated/installspace/twirtee_c-msg-paths.cmake")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/roseus/ros" TYPE DIRECTORY FILES "/home/twirtee/Work/ROS/Twirtee/catkin_ws/devel/share/roseus/ros/twirtee_c")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/roseus/ros" TYPE DIRECTORY FILES "/home/eric/Work/ROS/twirtee/catkin_ws/devel/share/roseus/ros/twirtee_c")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  execute_process(COMMAND "/usr/bin/python2" -m compileall "/home/twirtee/Work/ROS/Twirtee/catkin_ws/devel/lib/python2.7/dist-packages/twirtee_c")
+  execute_process(COMMAND "/usr/bin/python2" -m compileall "/home/eric/Work/ROS/twirtee/catkin_ws/devel/lib/python2.7/dist-packages/twirtee_c")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages" TYPE DIRECTORY FILES "/home/twirtee/Work/ROS/Twirtee/catkin_ws/devel/lib/python2.7/dist-packages/twirtee_c")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages" TYPE DIRECTORY FILES "/home/eric/Work/ROS/twirtee/catkin_ws/devel/lib/python2.7/dist-packages/twirtee_c")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/twirtee/Work/ROS/Twirtee/catkin_ws/build/twirtee_c/catkin_generated/installspace/twirtee_c.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/eric/Work/ROS/twirtee/catkin_ws/build/twirtee_c/catkin_generated/installspace/twirtee_c.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/twirtee_c/cmake" TYPE FILE FILES "/home/twirtee/Work/ROS/Twirtee/catkin_ws/build/twirtee_c/catkin_generated/installspace/twirtee_c-msg-extras.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/twirtee_c/cmake" TYPE FILE FILES "/home/eric/Work/ROS/twirtee/catkin_ws/build/twirtee_c/catkin_generated/installspace/twirtee_c-msg-extras.cmake")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/twirtee_c/cmake" TYPE FILE FILES
-    "/home/twirtee/Work/ROS/Twirtee/catkin_ws/build/twirtee_c/catkin_generated/installspace/twirtee_cConfig.cmake"
-    "/home/twirtee/Work/ROS/Twirtee/catkin_ws/build/twirtee_c/catkin_generated/installspace/twirtee_cConfig-version.cmake"
+    "/home/eric/Work/ROS/twirtee/catkin_ws/build/twirtee_c/catkin_generated/installspace/twirtee_cConfig.cmake"
+    "/home/eric/Work/ROS/twirtee/catkin_ws/build/twirtee_c/catkin_generated/installspace/twirtee_cConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/twirtee_c" TYPE FILE FILES "/home/twirtee/Work/ROS/Twirtee/catkin_ws/src/twirtee_c/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/twirtee_c" TYPE FILE FILES "/home/eric/Work/ROS/twirtee/catkin_ws/src/twirtee_c/package.xml")
 endif()
 

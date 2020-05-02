@@ -1,0 +1,27 @@
+<launch>
+  <include file="$(find twirtee_joystick)/launch/twirtee_joystick.launch"/>
+  <node
+      pkg="tf"
+      type="static_transform_publisher"
+      name="link1_broadcaster"
+      args="0 0 0 0 0 0 1 map base_link 10"
+      />
+  <group>
+    <machine
+	name="robot-pi"
+	address="192.168.0.32"
+	user="pi" password="raspberry"
+	env-loader="/home/pi/Work/ROS/src/env.sh"
+	default="true"
+	timeout="10"
+	/>
+    <node
+	machine="robot-pi"
+	name="twirtee_main"
+	pkg="twirtee_main"
+	type="start.sh"
+	output="screen"
+	/>
+  </group>
+</launch>
+

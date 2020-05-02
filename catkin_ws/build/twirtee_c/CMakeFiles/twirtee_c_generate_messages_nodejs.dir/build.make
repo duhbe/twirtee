@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/twirtee/Work/ROS/Twirtee/catkin_ws/src
+CMAKE_SOURCE_DIR = /home/eric/Work/ROS/twirtee/catkin_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/twirtee/Work/ROS/Twirtee/catkin_ws/build
+CMAKE_BINARY_DIR = /home/eric/Work/ROS/twirtee/catkin_ws/build
 
 # Utility rule file for twirtee_c_generate_messages_nodejs.
 
@@ -63,10 +63,10 @@ twirtee_c/CMakeFiles/twirtee_c_generate_messages_nodejs.dir/build: twirtee_c_gen
 .PHONY : twirtee_c/CMakeFiles/twirtee_c_generate_messages_nodejs.dir/build
 
 twirtee_c/CMakeFiles/twirtee_c_generate_messages_nodejs.dir/clean:
-	cd /home/twirtee/Work/ROS/Twirtee/catkin_ws/build/twirtee_c && $(CMAKE_COMMAND) -P CMakeFiles/twirtee_c_generate_messages_nodejs.dir/cmake_clean.cmake
+	cd /home/eric/Work/ROS/twirtee/catkin_ws/build/twirtee_c && $(CMAKE_COMMAND) -P CMakeFiles/twirtee_c_generate_messages_nodejs.dir/cmake_clean.cmake
 .PHONY : twirtee_c/CMakeFiles/twirtee_c_generate_messages_nodejs.dir/clean
 
 twirtee_c/CMakeFiles/twirtee_c_generate_messages_nodejs.dir/depend:
-	cd /home/twirtee/Work/ROS/Twirtee/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/twirtee/Work/ROS/Twirtee/catkin_ws/src /home/twirtee/Work/ROS/Twirtee/catkin_ws/src/twirtee_c /home/twirtee/Work/ROS/Twirtee/catkin_ws/build /home/twirtee/Work/ROS/Twirtee/catkin_ws/build/twirtee_c /home/twirtee/Work/ROS/Twirtee/catkin_ws/build/twirtee_c/CMakeFiles/twirtee_c_generate_messages_nodejs.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/eric/Work/ROS/twirtee/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/eric/Work/ROS/twirtee/catkin_ws/src /home/eric/Work/ROS/twirtee/catkin_ws/src/twirtee_c /home/eric/Work/ROS/twirtee/catkin_ws/build /home/eric/Work/ROS/twirtee/catkin_ws/build/twirtee_c /home/eric/Work/ROS/twirtee/catkin_ws/build/twirtee_c/CMakeFiles/twirtee_c_generate_messages_nodejs.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : twirtee_c/CMakeFiles/twirtee_c_generate_messages_nodejs.dir/depend
 

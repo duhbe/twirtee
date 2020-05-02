@@ -4,5 +4,5 @@ PROJECT_PKG_CONFIG_INCLUDE_DIRS = "".split(';') if "" != "" else []
 PROJECT_CATKIN_DEPENDS = "".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "twirtee_c"
-PROJECT_SPACE_DIR = "/home/twirtee/Work/ROS/Twirtee/catkin_ws/install"
+PROJECT_SPACE_DIR = "/home/eric/Work/ROS/twirtee/catkin_ws/install"
 PROJECT_VERSION = "0.0.0"

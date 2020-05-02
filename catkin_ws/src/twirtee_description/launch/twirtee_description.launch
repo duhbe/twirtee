@@ -1,0 +1,28 @@
+<launch>
+	<arg name="gui" default="False" />
+	<param 
+		name="robot_description" 
+		textfile="/home/eric/Work/ROS/twirtee/catkin_ws/src/twirtee_description/urdf/twirtee.urdf"  />
+	<param 
+		name="use_gui" 
+		value="$(arg gui)" />
+
+
+  <node
+      pkg="tf"
+      type="static_transform_publisher"
+      name="link1_broadcaster"
+      args="0 0 0 0 0 0 1 map footprint 10"
+      />
+
+   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" ></node>
+   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />      
+
+	<node 
+		name="rviz" 
+		pkg="rviz" 
+		type="rviz" 
+		args="-d $(find twirtee_description)/twirtee.rviz" 
+		required="true" 
+	/>
+</launch>
