@@ -36,63 +36,154 @@
     <color rgba="1.0 1.0 1.0 1.0"/>
   </material>
   <!-- Put here the robot description -->
+  <!-- - - - - - - - - - - -->
+  <!--   CASTER WHEELS     -->
+  <!-- - - - - - - - - - - -->
+  <!-- - - - - - - - - - - -->
+  <!--      MOTORS         -->
+  <!-- - - - - - - - - - - -->
   <!-- =========================== -->
   <!-- Links and joints definition -->
   <!-- =========================== -->
   <link name="footprint"/>
-  <!-- Robot's base -->
+  <!-- floor 0 -->
   <joint name="base_joint" type="fixed">
     <parent link="footprint"/>
-    <child link="level0"/>
-    <origin rpy="0 0 0" xyz="0 0 0.0665"/>
+    <child link="floor0"/>
+    <origin rpy="0 0 0" xyz="0 0 0.068"/>
   </joint>
-  <link name="level0">
+  <link name="floor0">
     <visual>
       <geometry>
         <box size="0.3 0.2 0.003"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.14 -0.0925 0.0315"/>
+      <geometry>
         <cylinder length="0.06" radius="0.002"/>
       </geometry>
+      <material name="green">
+        <color rgba="0.0 1.0 0.0 1.0"/>
+      </material>
+    </visual>
+    <visual>
+      <origin rpy="0 0 0" xyz="0.14 -0.0925 0.0315"/>
+      <geometry>
+        <cylinder length="0.06" radius="0.002"/>
+      </geometry>
+      <material name="green">
+        <color rgba="0.0 1.0 0.0 1.0"/>
+      </material>
+    </visual>
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.14 0.0925 0.0315"/>
+      <geometry>
+        <cylinder length="0.06" radius="0.002"/>
+      </geometry>
+      <material name="green">
+        <color rgba="0.0 1.0 0.0 1.0"/>
+      </material>
+    </visual>
+    <visual>
+      <origin rpy="0 0 0" xyz="0.14 0.0925 0.0315"/>
+      <geometry>
+        <cylinder length="0.06" radius="0.002"/>
+      </geometry>
+      <material name="green">
+        <color rgba="0.0 1.0 0.0 1.0"/>
+      </material>
     </visual>
   </link>
-  <joint name="l0l1_joint" type="fixed">
-    <parent link="level0"/>
-    <child link="level1"/>
+  <!-- floor 1 -->
+  <joint name="f0f1_joint" type="fixed">
+    <parent link="floor0"/>
+    <child link="floor1"/>
     <origin rpy="0 0 0" xyz=" 0.0 0.0 0.0615"/>
   </joint>
-  <link name="level1">
+  <link name="floor1">
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <box size="0.3 0.2 0.003"/>
+        <box size="0.35 0.25 0.003"/>
       </geometry>
     </visual>
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.14 -0.0925 0.0265"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.002"/>
+      </geometry>
+      <material name="green">
+        <color rgba="0.0 1.0 0.0 1.0"/>
+      </material>
+    </visual>
+    <visual>
+      <origin rpy="0 0 0" xyz="0.14 -0.0925 0.0265"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.002"/>
+      </geometry>
+      <material name="green">
+        <color rgba="0.0 1.0 0.0 1.0"/>
+      </material>
+    </visual>
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.14 0.0925 0.0265"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.002"/>
+      </geometry>
+      <material name="green">
+        <color rgba="0.0 1.0 0.0 1.0"/>
+      </material>
+    </visual>
+    <visual>
+      <origin rpy="0 0 0" xyz="0.14 0.0925 0.0265"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.002"/>
+      </geometry>
+      <material name="green">
+        <color rgba="0.0 1.0 0.0 1.0"/>
+      </material>
+    </visual>
   </link>
-  <joint name="l1l2_joint" type="fixed">
-    <parent link="level1"/>
-    <child link="level2"/>
+  <!-- floor 2 -->
+  <joint name="f1f2_joint" type="fixed">
+    <parent link="floor1"/>
+    <child link="floor2"/>
     <origin rpy="0 0 0" xyz=" 0.0 0.0 0.0515"/>
   </joint>
-  <link name="level2">
+  <link name="floor2">
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <box size="0.3 0.2 0.003"/>
+        <box size="0.35 0.25 0.003"/>
       </geometry>
     </visual>
   </link>
+  <!-- ========================== -->
+  <!--          WHEELS            -->
+  <!-- ========================== -->
   <link name="left_wheel">
     <visual>
       <origin rpy="0 1.57079632679 1.57079632679" xyz="0 0 0"/>
       <geometry>
         <cylinder length="0.01" radius="0.032"/>
       </geometry>
-      <material name="black"/>
+      <material name="cyan"/>
+    </visual>
+    <visual>
+      <origin rpy="0 1.57079632679 1.57079632679" xyz="0 0.00225 0 "/>
+      <geometry>
+        <cylinder length="0.0145" radius="0.003"/>
+      </geometry>
+      <material name="red">
+        <color rgba="1.0 0.0 0.0 1.0"/>
+      </material>
     </visual>
   </link>
-  <joint name="left_wheel_hinge" type="continuous">
-    <parent link="level0"/>
+  <joint name="left_motor_leftwheel_joint" type="continuous">
+    <parent link="left_motor"/>
     <child link="left_wheel"/>
-    <origin rpy="0 0 0" xyz="0.1 0.105 -0.0345"/>
+    <origin rpy="0 0 0" xyz="0 -0.01975 -0.007"/>
     <axis rpy="0 0 0" xyz="0 1 0"/>
     <limit effort="100" velocity="100"/>
     <joint_properties damping="0.0" friction="0.0"/>
@@ -103,22 +194,233 @@
       <geometry>
         <cylinder length="0.01" radius="0.032"/>
       </geometry>
-      <material name="black"/>
+      <material name="cyan"/>
+    </visual>
+    <visual>
+      <origin rpy="0 1.57079632679 1.57079632679" xyz="0 0.00225 0 "/>
+      <geometry>
+        <cylinder length="0.0145" radius="0.003"/>
+      </geometry>
+      <material name="red">
+        <color rgba="1.0 0.0 0.0 1.0"/>
+      </material>
     </visual>
   </link>
-  <joint name="right_wheel_hinge" type="continuous">
-    <parent link="level0"/>
+  <joint name="right_motor_rightwheel_joint" type="continuous">
+    <parent link="right_motor"/>
     <child link="right_wheel"/>
-    <origin rpy="0 0 0" xyz="0.1 -0.105 -0.0345"/>
+    <origin rpy="0 0 0" xyz="0 -0.01975 -0.007"/>
+    <axis rpy="0 0 0" xyz="0 1 0"/>
+    <limit effort="100" velocity="100"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+  <link name="left_caster">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <sphere radius="0.02"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+  </link>
+  <joint name="floor0_left_caster_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="-0.11 0.05 -0.045"/>
+    <parent link="floor0"/>
+    <child link="left_caster"/>
+  </joint>
+  <link name="right_caster">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <sphere radius="0.02"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+  </link>
+  <joint name="floor0_right_caster_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="-0.11 -0.05 -0.045"/>
+    <parent link="floor0"/>
+    <child link="right_caster"/>
+  </joint>
+  <!-- ========================== -->
+  <!--          MOTORS            -->
+  <!-- ========================== -->
+  <link name="left_motor">
+    <visual>
+      <origin rpy="0 1.57079632679 1.57079632679" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.0215" radius="0.0185"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <visual>
+      <origin rpy="0 1.57079632679 1.57079632679" xyz="0 0.02225 0"/>
+      <geometry>
+        <cylinder length="0.023" radius="0.0164"/>
+      </geometry>
+      <material name="green">
+        <color rgba="0.0 1.0 0.0 1.0"/>
+      </material>
+    </visual>
+    <visual>
+      <origin rpy="0 1.57079632679 1.57079632679" xyz="0 -0.01375 -0.007"/>
+      <geometry>
+        <cylinder length="0.006" radius="0.006"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0.0 0.0 1.0 1.0"/>
+      </material>
+    </visual>
+    <visual>
+      <origin rpy="0 1.57079632679 1.57079632679" xyz="0 -0.01225 0.002"/>
+      <geometry>
+        <box size="0.045 0.04 0.003"/>
+      </geometry>
+      <material name="red">
+        <color rgba="1.0 0.0 0.0 1.0"/>
+      </material>
+    </visual>
+    <visual>
+      <origin rpy="0 1.57079632679 1.57079632679" xyz="0 0.00925 0.023"/>
+      <geometry>
+        <box size="0.003 0.04 0.04"/>
+      </geometry>
+      <material name="red">
+        <color rgba="1.0 0.0 0.0 1.0"/>
+      </material>
+    </visual>
+  </link>
+  <joint name="l0_left_motor_joint" type="fixed">
+    <parent link="floor0"/>
+    <child link="left_motor"/>
+    <origin rpy="0 0 3.14159265359" xyz="0.1 0.1 -0.026"/>
+    <axis rpy="0 0 0" xyz="0 1 0"/>
+    <limit effort="100" velocity="100"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+  <link name="right_motor">
+    <visual>
+      <origin rpy="0 1.57079632679 1.57079632679" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.0215" radius="0.0185"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <visual>
+      <origin rpy="0 1.57079632679 1.57079632679" xyz="0 0.02225 0"/>
+      <geometry>
+        <cylinder length="0.023" radius="0.0164"/>
+      </geometry>
+      <material name="green">
+        <color rgba="0.0 1.0 0.0 1.0"/>
+      </material>
+    </visual>
+    <visual>
+      <origin rpy="0 1.57079632679 1.57079632679" xyz="0 -0.01375 -0.007"/>
+      <geometry>
+        <cylinder length="0.006" radius="0.006"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0.0 0.0 1.0 1.0"/>
+      </material>
+    </visual>
+    <visual>
+      <origin rpy="0 1.57079632679 1.57079632679" xyz="0 -0.01225 0.002"/>
+      <geometry>
+        <box size="0.045 0.04 0.003"/>
+      </geometry>
+      <material name="red">
+        <color rgba="1.0 0.0 0.0 1.0"/>
+      </material>
+    </visual>
+    <visual>
+      <origin rpy="0 1.57079632679 1.57079632679" xyz="0 0.00925 0.023"/>
+      <geometry>
+        <box size="0.003 0.04 0.04"/>
+      </geometry>
+      <material name="red">
+        <color rgba="1.0 0.0 0.0 1.0"/>
+      </material>
+    </visual>
+  </link>
+  <joint name="l0_right_motor_joint" type="fixed">
+    <parent link="floor0"/>
+    <child link="right_motor"/>
+    <origin rpy="0 0 0.0" xyz="0.1 -0.1 -0.026"/>
     <axis rpy="0 0 0" xyz="0 1 0"/>
     <limit effort="100" velocity="100"/>
     <joint_properties damping="0.0" friction="0.0"/>
   </joint>
   <!-- ========================== -->
-  <!--          CAMERAS           -->
+  <!--          CAMERA            -->
   <!-- ========================== -->
+  <joint name="f2_cam_joint" type="fixed">
+    <parent link="floor2"/>
+    <child link="cam"/>
+    <origin rpy="0 0.3 0" xyz=" 0.175 0.05 0.0315"/>
+  </joint>
+  <link name="cam">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.02 0.02 0.02"/>
+      </geometry>
+      <material name="orange">
+        <color rgba="1.0 0.423529411765 0.0392156862745 1.0"/>
+      </material>
+    </visual>
+  </link>
+  <!-- ========================== -->
+  <!--          IMU            -->
+  <!-- ========================== -->
+  <joint name="f1_imu_joint" type="fixed">
+    <parent link="floor1"/>
+    <child link="imu"/>
+    <origin rpy="0 0 0" xyz=" 0.0 0.0 0.0065"/>
+  </joint>
+  <link name="imu">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.01 0.005 0.01"/>
+      </geometry>
+      <material name="orange">
+        <color rgba="1.0 0.423529411765 0.0392156862745 1.0"/>
+      </material>
+    </visual>
+  </link>
   <!-- ========================= -->
   <!--           LIDAR           -->
   <!-- ========================= -->
+  <joint name="f2_lidarbase_joint" type="fixed">
+    <parent link="floor2"/>
+    <child link="lidarbase"/>
+    <origin rpy="0 0 0" xyz=" 0.14 0.0 0.019"/>
+  </joint>
+  <link name="lidarbase">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.035" radius="0.035"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="lidarbase_head_joint" type="continuous">
+    <axis xyz="0.0 0.0 1.0"/>
+    <parent link="lidarbase"/>
+    <child link="lidarhead"/>
+    <origin rpy="0 0 0" xyz=" 0.0 0.0 0.0275"/>
+  </joint>
+  <link name="lidarhead">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.02" radius="0.035"/>
+      </geometry>
+      <material name="brown">
+        <color rgba="0.870588235294 0.811764705882 0.764705882353 1.0"/>
+      </material>
+    </visual>
+  </link>
 </robot>
 

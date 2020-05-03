@@ -39,37 +39,142 @@
     <geometry>
       <cylinder length="${wheelWidth}" radius="${wheelRadius}"/>
     </geometry>
-    <material name="black"/>
+    <material name="cyan"/>
   </visual>
+  <visual>
+    <origin xyz="0 ${motorAxisWidth/2.0-wheelWidth/2.0} 0 " rpy="0 ${PI/2} ${PI/2}" />
+    <geometry>
+      <cylinder length="${motorAxisWidth}" radius="${motorAxisRadius}"/>
+    </geometry>
+    <material name="red">   
+		<color rgba="1.0 0.0 0.0 1.0"/>
+	</material>
+  </visual>    
 </link>
 
-<joint name="${lr}_wheel_hinge" type="continuous">
-  <parent link="level0"/>
+<joint name="${lr}_motor_${lr}wheel_joint" type="continuous">
+  <parent link="${lr}_motor"/>
   <child link="${lr}_wheel"/>
-  <origin xyz="${floor0Length/2-wheelXOffset} ${tY*wheelWidth/2+tY*floor0Width/2} ${-wheelFloor0Offset-floor0Heigth/2}" rpy="0 0 0" />
+  <origin xyz="0 ${-motorC1Width/2.0-motorC3Width-motorFixtVHeigth} ${-wheelOffset}" rpy="0 0 0" />
   <axis xyz="0 1 0" rpy="0 0 0" />
   <limit effort="100" velocity="100"/>
   <joint_properties damping="0.0" friction="0.0"/>
 </joint>
 
+</xacro:macro>
+
+<!-- - - - - - - - - - - -->
+<!--   CASTER WHEELS     -->
+<!-- - - - - - - - - - - -->
+
+<xacro:macro name="caster" params="lr tY">
+<link name="${lr}_caster">
+   <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <sphere radius="${casterRadius}"/>
+    </geometry>
+    <material name="red"/>
+  </visual>
+</link>
+
+<joint name="floor0_${lr}_caster_joint" type="fixed">
+	<origin xyz="${-floor0Length/2.0+0.04} ${tY*0.05} ${-floor0Heigth/2-motorFixtVLength/2.0-motorFixtVOffset-wheelOffset-wheelRadius+casterRadius}" rpy="0 0 0" />
+  <parent link="floor0"/>
+  <child link="${lr}_caster"/>
+</joint>
 
 </xacro:macro>
 
 <!-- - - - - - - - - - - -->
-<!--      Motors         -->
+<!--      MOTORS         -->
 <!-- - - - - - - - - - - -->
+
 <xacro:macro name="motor" params="lr tY">
 
 <link name="${lr}_motor">
   <visual>
     <origin xyz="0 0 0" rpy="0 ${PI/2} ${PI/2}" />
     <geometry>
-      <cylinder length="${wheelWidth}" radius="${wheelRadius}"/>
+      <cylinder length="${motorC1Width}" radius="${motorC1Radius}"/>
     </geometry>
     <material name="black"/>
   </visual>
+  <visual>
+    <origin xyz="0 ${motorC1Width/2+motorC2Width/2.0} 0" rpy="0 ${PI/2} ${PI/2}" />
+    <geometry>
+      <cylinder length="${motorC2Width}" radius="${motorC2Radius}"/>
+    </geometry>
+    <material name="green">   
+		<color rgba="0.0 1.0 0.0 1.0"/>
+	</material>
+  </visual>
+  <visual>
+    <origin xyz="0 ${-motorC1Width/2.0-motorC3Width/2.0} ${-wheelOffset}" rpy="0 ${PI/2} ${PI/2}" />
+    <geometry>
+      <cylinder length="${motorC3Width}" radius="${motorC3Radius}"/>
+    </geometry>
+    <material name="blue">   
+		<color rgba="0.0 0.0 1.0 1.0"/>
+	</material>
+  </visual>    
+  <visual>
+    <origin xyz="0 ${-motorC1Width/2.0-motorFixtVHeigth/2.0} ${motorFixtVOffset}" rpy="0 ${PI/2} ${PI/2}" />
+    <geometry>
+		<box size="${motorFixtVLength} ${motorFixtVWidth} ${motorFixtVHeigth}" />
+    </geometry>
+    <material name="red">   
+		<color rgba="1.0 0.0 0.0 1.0"/>
+	</material>
+  </visual>  
+  <visual>
+    <origin xyz="0 ${-motorC1Width/2.0+motorFixtHLength/2.0} ${motorFixtVLength/2.0-motorFixtHHeigth/2.0+motorFixtVOffset}" rpy="0 ${PI/2} ${PI/2}" />
+    <geometry>
+		<box size="${motorFixtHHeigth} ${motorFixtHWidth} ${motorFixtHLength}" />
+    </geometry>
+    <material name="red">   
+		<color rgba="1.0 0.0 0.0 1.0"/>
+	</material>
+  </visual>  
 </link>
 
+<joint name="l0_${lr}_motor_joint" type="fixed">
+  <parent link="floor0"/>
+  <child link="${lr}_motor"/>
+  <origin xyz="${floor0Length/2-wheelXOffset} ${tY*floor0Width/2} ${-floor0Heigth/2-motorFixtVLength/2.0-motorFixtVOffset}" rpy="0 0 ${(tY+1)*PI/2.0}" />
+  <axis xyz="0 1 0" rpy="0 0 0" />
+  <limit effort="100" velocity="100"/>
+  <joint_properties damping="0.0" friction="0.0"/>
+</joint>
 
 </xacro:macro>
+
+
+<!-- - - - - - - - - - - -->
+<!--      Pilars         -->
+<!-- - - - - - - - - - - -->
+<xacro:macro name="f0Pilar" params="tX tY">
+  <visual>
+    <origin xyz="${tX*0.14} ${tY*0.0925} ${floor0Heigth/2.0+spacer01Width/2.0}" rpy="0 0 0" />
+    <geometry>
+      <cylinder length="${spacer01Width}" radius="${spacerRadius}"/>
+    </geometry>
+    <material name="green">   
+		<color rgba="0.0 1.0 0.0 1.0"/>
+	</material>
+  </visual>
+</xacro:macro>
+
+<xacro:macro name="f1Pilar" params="tX tY">
+  <visual>
+    <origin xyz="${tX*0.14} ${tY*0.0925} ${floor1Heigth/2.0+spacer12Width/2.0}" rpy="0 0 0" />
+    <geometry>
+      <cylinder length="${spacer12Width}" radius="${spacerRadius}"/>
+    </geometry>
+    <material name="green">   
+		<color rgba="0.0 1.0 0.0 1.0"/>
+	</material>
+  </visual>
+</xacro:macro>
+
 </robot>

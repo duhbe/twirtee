@@ -21,16 +21,16 @@
   <xacro:property name="spacer01Width" 	value="0.060"/>
   <xacro:property name="spacer01Mass" 	value="1"/>
    
-  <xacro:property name="floor1Length" 	value="0.300"/>
-  <xacro:property name="floor1Width" 	value="0.200"/>
+  <xacro:property name="floor1Length" 	value="0.350"/>
+  <xacro:property name="floor1Width" 	value="0.250"/>
   <xacro:property name="floor1Heigth" 	value="0.003"/>
   <xacro:property name="floor1Mass" 	value="1"/>
 
   <xacro:property name="spacer12Width" 	value="0.050"/>
   <xacro:property name="spacer12Mass" 	value="1"/>
   
-  <xacro:property name="floor2Length" 	value="0.30"/>
-  <xacro:property name="floor2Width" 	value="0.20"/>
+  <xacro:property name="floor2Length" 	value="0.350"/>
+  <xacro:property name="floor2Width" 	value="0.250"/>
   <xacro:property name="floor2Heigth" 	value="0.003"/>
   <xacro:property name="floor2Mass" 	value="1"/>
 
@@ -41,36 +41,63 @@
   <xacro:property name="wheelRadius" 	value="0.032"/>
   <xacro:property name="wheelMass" 		value="5"/>
 
-  <xacro:property name="wheelExcen" 	value="0.007"/>
+  <xacro:property name="wheelOffset" 	value="0.007"/>
 
   <xacro:property name="wheelFixtOffset" 	value="0.030"/>
   <xacro:property name="wheelFloor0Offset" 	value="${wheelFixtOffset+motorFixtHHeigth}"/>
   <xacro:property name="wheelXOffset" 	value="0.05"/>
 
-  <xacro:property name="motorAxisWidth" 	value="0.0045"/>
+  <xacro:property name="motorAxisWidth" 	value="0.0145"/>
   <xacro:property name="motorAxisRadius" 	value="0.003"/>
   <xacro:property name="motorAxisMass" 		value="5"/>
 
-  <xacro:property name="motorWidth" 	value="0.0445"/>
-  <xacro:property name="motorRadius" 	value="0.0185"/>
-  <xacro:property name="motorMass" 		value="5"/>
+  <xacro:property name="motorC1Width" 	value="0.0215"/>
+  <xacro:property name="motorC1Radius" 	value="0.0185"/>
+  <xacro:property name="motorC1Mass" 		value="5"/>
+  <xacro:property name="motorC2Width" 	value="0.0230"/>
+  <xacro:property name="motorC2Radius" 	value="0.0164"/>
+  <xacro:property name="motorC2Mass" 		value="5"/>
+  <xacro:property name="motorC3Width" 	value="0.006"/>
+  <xacro:property name="motorC3Radius" 	value="0.006"/>
+  <xacro:property name="motorC3Mass" 		value="5"/>
   
-
-
-  <xacro:property name="motorFixtVLength" 	value="0.30"/>
-  <xacro:property name="motorFixtVWidth" 	value="0.20"/>
+  <xacro:property name="motorFixtVLength" 	value="0.045"/>
+  <xacro:property name="motorFixtVWidth" 	value="0.040"/>
   <xacro:property name="motorFixtVHeigth" 	value="0.003"/>
   <xacro:property name="motorFixtVMass" 	value="1"/>
   
-  <xacro:property name="motorFixtHLength" 	value="0.30"/>
-  <xacro:property name="motorFixtHWidth" 	value="0.20"/>
+  <xacro:property name="motorFixtVOffset"	value="0.002"/>
+  
+  <xacro:property name="motorFixtHLength" 	value="0.040"/>
+  <xacro:property name="motorFixtHWidth" 	value="0.040"/>
   <xacro:property name="motorFixtHHeigth" 	value="0.003"/>
   <xacro:property name="motorFixtHMass" 	value="1"/>
 
-  <xacro:property name="cameraSize" 	value="0.02"/>
-  <xacro:property name="cameraMass" 	value="0.5"/>
+  <xacro:property name="casterRadius" 	value="0.02"/>
 
+  <xacro:property name="camLength" 	value="0.02"/>
+  <xacro:property name="camWidth" 	value="0.02"/>
+  <xacro:property name="camHeigth" 	value="0.02"/>
+  <xacro:property name="camMass" 	value="0.5"/>
+  <xacro:property name="camPitch" 	value="0.3"/>
+  <xacro:property name="camXOffset" 	value="0.175"/>
+  <xacro:property name="camYOffset" 	value="0.05"/>
+   
 
+  <xacro:property name="lidarBaseRadius" 	value="0.035"/>
+  <xacro:property name="lidarBaseLength" 	value="0.035"/>
+  <xacro:property name="lidarBaseMass" 		value="0.5"/>
+  <xacro:property name="lidarBaseXOffset" 	value="0.14"/>
+
+  <xacro:property name="lidarHeadRadius" 	value="0.035"/>
+  <xacro:property name="lidarHeadLength" 	value="0.020"/>
+  <xacro:property name="lidarHeadMass" 		value="0.5"/>
+
+  <xacro:property name="imuLength" 	value="0.010"/>
+  <xacro:property name="imuWidth" 	value="0.005"/>
+  <xacro:property name="imuHeigth" 	value="0.010"/>
+  <xacro:property name="imuMass" 	value="1"/>
+  
   <xacro:include filename="$(find twirtee_description)/urdf/materials.xacro" />
   <xacro:include filename="$(find twirtee_description)/urdf/macros.xacro" />
 
@@ -80,49 +107,56 @@
 
   <link name="footprint" />
 
-<!-- Level 0 -->
+<!-- floor 0 -->
 
   <joint name="base_joint" type="fixed">
     <parent link="footprint"/>
-    <child link="level0"/>
-      <origin xyz="0 0 ${wheelRadius+wheelFloor0Offset+floor0Heigth/2}" rpy="0 0 0" />
+    <child link="floor0"/>
+      <origin xyz="0 0 ${wheelRadius+wheelOffset+motorFixtVOffset+motorFixtVLength/2.0+motorFixtHHeigth+floor0Heigth/2.0}" rpy="0 0 0" />
   </joint>
 
-  <link name="level0">
+  <link name="floor0">
     <visual>
       <geometry>
 		<box size="${floor0Length} ${floor0Width} ${floor0Heigth}" />
-	    <cylinder radius="${spacerRadius}" length="${spacer01Width}"/>
       </geometry>
     </visual>
+	<f0Pilar tX="-1.0" tY="-1.0" />
+	<f0Pilar tX="1.0" tY="-1.0" />
+	<f0Pilar tX="-1.0" tY="1.0" />
+	<f0Pilar tX="1.0" tY="1.0" />
   </link>
 
-<!-- Level 1 -->
+<!-- floor 1 -->
 
-  <joint name="l0l1_joint" type="fixed">
-    <parent link="level0"/>
-    <child link="level1"/>
+  <joint name="f0f1_joint" type="fixed">
+    <parent link="floor0"/>
+    <child link="floor1"/>
 	<origin xyz=" 0.0 0.0 ${spacer01Width+floor1Heigth/2}" rpy="0 0 0" />    
   </joint>
 
-  <link name="level1">
+  <link name="floor1">
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
 		<box size="${floor1Length} ${floor1Width} ${floor1Heigth}" />
       </geometry>
-    </visual>
+    </visual>      
+	<f1Pilar tX="-1.0" tY="-1.0" />
+	<f1Pilar tX="1.0" tY="-1.0" />
+	<f1Pilar tX="-1.0" tY="1.0" />
+	<f1Pilar tX="1.0" tY="1.0" />
   </link>
 
-<!-- Level 2 -->
+<!-- floor 2 -->
 
-  <joint name="l1l2_joint" type="fixed">
-    <parent link="level1"/>
-    <child link="level2"/>
+  <joint name="f1f2_joint" type="fixed">
+    <parent link="floor1"/>
+    <child link="floor2"/>
 	<origin xyz=" 0.0 0.0 ${spacer12Width+floor1Heigth/2}" rpy="0 0 0" />    
   </joint>
     
-  <link name="level2">
+  <link name="floor2">
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
@@ -137,24 +171,96 @@
 
 <wheel lr="left" tY="1"/>
 <wheel lr="right" tY="-1"/>
+<caster lr="left" tY="1"/>
+<caster lr="right" tY="-1"/>
 
 <!-- ========================== -->
 <!--          MOTORS            -->
 <!-- ========================== -->
 
+<motor lr="left" tY="1"/>
+<motor lr="right" tY="-1"/>
 
 <!-- ========================== -->
 <!--          CAMERA            -->
 <!-- ========================== -->
 
+  <joint name="f2_cam_joint" type="fixed">
+    <parent link="floor2"/>
+    <child link="cam"/>
+	<origin xyz=" ${camXOffset} ${camYOffset} ${floor2Heigth/2+camHeigth/2.0+0.02}" rpy="0 ${camPitch} 0" />    
+  </joint>
+
+  <link name="cam">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+		<box size="${camLength} ${camWidth} ${camHeigth}" />
+      </geometry>
+	  <material name="orange">
+		  <color rgba="${255/255} ${108/255} ${10/255} 1.0"/>
+	  </material>      
+    </visual>      
+  </link>
+
 <!-- ========================== -->
 <!--          IMU            -->
 <!-- ========================== -->
 
+  <joint name="f1_imu_joint" type="fixed">
+    <parent link="floor1"/>
+    <child link="imu"/>
+	<origin xyz=" 0.0 0.0 ${floor1Heigth/2+imuHeigth/2.0}" rpy="0 0 0" />    
+  </joint>
+
+  <link name="imu">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+		<box size="${imuLength} ${imuWidth} ${imuHeigth}" />
+      </geometry>
+	  <material name="orange">
+		  <color rgba="${255/255} ${108/255} ${10/255} 1.0"/>
+	  </material>      
+    </visual>      
+  </link>
 
 <!-- ========================= -->
 <!--           LIDAR           -->
 <!-- ========================= -->
 
+  <joint name="f2_lidarbase_joint" type="fixed">
+    <parent link="floor2"/>
+    <child link="lidarbase"/>
+	<origin xyz=" ${lidarBaseXOffset} 0.0 ${floor2Heigth/2+lidarBaseLength/2.0}" rpy="0 0 0" />    
+  </joint>
+    
+  <link name="lidarbase">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+		<cylinder radius="${lidarBaseRadius}" length="${lidarBaseLength}" />
+      </geometry>
+    </visual>
+  </link>
+  
+  <joint name="lidarbase_head_joint" type="continuous">
+	<axis xyz="0.0 0.0 1.0" />
+    <parent link="lidarbase"/>
+    <child link="lidarhead"/>
+	<origin xyz=" 0.0 0.0 ${lidarBaseLength/2.0+lidarHeadLength/2.0}" rpy="0 0 0" />    
+  </joint>
+    
+  <link name="lidarhead">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+		<cylinder radius="${lidarHeadRadius}" length="${lidarHeadLength}"/>
+      </geometry>
+	  <material name="brown">
+		  <color rgba="${222/255} ${207/255} ${195/255} 1.0"/>
+	  </material>    
+    </visual>
+  </link>
 
 </robot>
